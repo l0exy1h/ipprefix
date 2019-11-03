@@ -15,6 +15,8 @@ convert x into binary, highlight first y bits with ANSI escape sequences
 $ ipprefix 192.168.1.1/12
 ```
 
+![](ipprefix.png)
+
 ## Dependency
 
 - Bash
