@@ -1,7 +1,16 @@
 # ipprefix
 IP Prefix Displayer
 
-accepts one command line argument
-x.x.x.x/y
-convert x into binary
-highlight first y bits
+## Usage 
+
+```sh
+$ ipprefix x.x.x.x/y
+```
+
+convert x into binary, highlight first y bits with ANSI escape sequences
+
+## Examples
+
+```sh
+$ ipprefix 192.168.1.1/12
+```
