@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# prefix displayer
+# accepts one command line argument
+# x.x.x.x/y
+# convert x into binary
+# highlight first y bits
+
+# eg. longestprefix 192.168.1.1/12
+# eg. longestprefix 10.1.1.1/12
+
+# extract the prefix number
+# and convert the IP to binary
+ip=$(echo $1 | cut -d'/' -f1)
+prefix=$(echo $1 | cut -d'/' -f2)
+bin=""
+for i in $(seq 1 4)
+do
+	a=$(echo $ip | cut -d'.' -f $i)
+	bin="$bin".$(python -c "print(format($a, \"08b\"))")
+done
+bin=${bin:1}
+#echo $bin
+
+# highlight the first $prefix bits
+cnt=0
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# set a color at the beginning
+echo -en "$RED"
+for i in $(seq 1 ${#bin})
+do
+	c=${bin:i-1:1}
+	echo -n "$c"
+
+	# clear the color on prefix'th digit
+	if [ "$c" == "1" ] || [ "$c" == "0" ]
+	then
+		let cnt++
+		if [ $cnt -eq $prefix ]
+		then
+			echo -en "$NC"
+		fi
+	fi
+done
+echo ""
