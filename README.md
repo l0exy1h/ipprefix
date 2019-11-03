@@ -14,3 +14,8 @@ convert x into binary, highlight first y bits with ANSI escape sequences
 ```sh
 $ ipprefix 192.168.1.1/12
 ```
+
+## Dependency
+
+Bash
+Python3
