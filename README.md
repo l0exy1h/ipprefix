@@ -17,5 +17,5 @@ $ ipprefix 192.168.1.1/12
 
 ## Dependency
 
-Bash
-Python3
+- Bash
+- Python3
