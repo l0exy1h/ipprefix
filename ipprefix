@@ -14,7 +14,9 @@
 ip=$(echo $1 | cut -d'/' -f1)
 prefix=$(echo $1 | cut -d'/' -f2)
 bin=""
-for i in $(seq 1 4)
+ndots=$(echo $ip | awk -F'.' '{print NF-1}')
+ndots=$((ndots+1))
+for i in $(seq 1 $ndots)
 do
 	a=$(echo $ip | cut -d'.' -f $i)
 	bin="$bin".$(python -c "print(format($a, \"08b\"))")
